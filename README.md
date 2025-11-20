@@ -1,6 +1,6 @@
-# Full-Stack Portfolio with Admin Panel
+# Portfolio with Admin Panel
 
-A modern, full-stack portfolio website with admin panel for easy content management. Built with React, TypeScript, TailwindCSS, Node.js, Express, and MongoDB.
+Portfolio website with admin panel for easy content management.
 
 ## Features
 
@@ -51,8 +51,6 @@ sudo systemctl start mongod
 # Or
 mongod
 
-# On Windows
-net start MongoDB
 ```
 
 **Or use MongoDB Atlas (cloud):**
@@ -95,13 +93,6 @@ node scripts/setup.js
 - Password: `admin123`
 
 ⚠️ **IMPORTANT:** Change these credentials after first login!
-
-**Manual setup (optional):**
-If you prefer to run scripts manually:
-```bash
-node scripts/createAdmin.js
-node scripts/seedPortfolio.js
-```
 
 #### 4. Start Backend Server
 
@@ -194,7 +185,6 @@ npm run build
    - Vercel
    - AWS S3 + CloudFront
    - GitHub Pages
-
 
 
 ## License
