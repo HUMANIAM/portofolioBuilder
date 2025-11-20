@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Save, Plus, X, ExternalLink, Edit, Trash2 } from 'lucide-react';
+import { ArrowLeft, Save, X, ExternalLink, Edit, Trash2 } from 'lucide-react';
 import { portfolioAPI } from '../../services/api';
 
 function Skills() {
