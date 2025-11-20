@@ -62,6 +62,12 @@ const portfolioSchema = new mongoose.Schema({
   cvUrl: {
     type: String,
     default: null
+  },
+
+  // Profile Image
+  profileImageUrl: {
+    type: String,
+    default: null
   }
 }, {
   timestamps: true

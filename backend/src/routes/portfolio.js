@@ -12,10 +12,12 @@ import {
   updateProject,
   deleteProject,
   uploadCV,
-  deleteCV
+  deleteCV,
+  uploadProfileImage,
+  deleteProfileImage
 } from '../controllers/portfolioController.js';
 import { authenticateToken } from '../middleware/auth.js';
-import { upload } from '../middleware/upload.js';
+import { cvUpload, imageUpload } from '../middleware/upload.js';
 
 const router = express.Router();
 
@@ -39,7 +41,11 @@ router.put('/projects/:id', authenticateToken, updateProject);
 router.delete('/projects/:id', authenticateToken, deleteProject);
 
 // CV upload
-router.post('/cv', authenticateToken, upload.single('cv'), uploadCV);
+router.post('/cv', authenticateToken, cvUpload.single('cv'), uploadCV);
 router.delete('/cv', authenticateToken, deleteCV);
+
+// Profile image upload
+router.post('/profile-image', authenticateToken, imageUpload.single('image'), uploadProfileImage);
+router.delete('/profile-image', authenticateToken, deleteProfileImage);
 
 export default router;

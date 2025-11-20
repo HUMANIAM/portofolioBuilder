@@ -27,6 +27,7 @@ interface PortfolioData {
     liveUrl?: string;
   }>;
   cvUrl?: string;
+  profileImageUrl?: string;
 }
 
 function Portfolio() {
@@ -74,9 +75,21 @@ function Portfolio() {
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-1">
-                <div className="w-full h-full rounded-full bg-gray-950 flex items-center justify-center">
-                  <User size={24} className="text-blue-400" />
-                </div>
+                {data?.profileImageUrl ? (
+                  <img
+                    src={`http://localhost:5000${data.profileImageUrl}`}
+                    alt="Profile"
+                    className="w-full h-full rounded-full object-cover"
+                    onError={(e) => {
+                      console.error('Failed to load profile image:', data.profileImageUrl);
+                      e.currentTarget.style.display = 'none';
+                    }}
+                  />
+                ) : (
+                  <div className="w-full h-full rounded-full bg-gray-950 flex items-center justify-center">
+                    <User size={24} className="text-blue-400" />
+                  </div>
+                )}
               </div>
               <a href="#home" className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
                 Portfolio

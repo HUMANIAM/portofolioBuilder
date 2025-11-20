@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Plus, Edit, Trash2, Save, X } from 'lucide-react';
+import { ArrowLeft, Save, Plus, X, ExternalLink, Edit, Trash2 } from 'lucide-react';
 import { portfolioAPI } from '../../services/api';
 
 function Skills() {
@@ -69,7 +69,7 @@ function Skills() {
   return (
     <div className="min-h-screen bg-gray-950">
       <header className="bg-gray-900 border-b border-gray-800">
-        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-4">
             <Link to="/admin/dashboard" className="text-gray-400 hover:text-white transition-colors">
               <ArrowLeft size={24} />
@@ -78,13 +78,24 @@ function Skills() {
               Skills
             </h1>
           </div>
-          <button
-            onClick={() => setShowAddForm(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
-          >
-            <Plus size={18} />
-            Add Category
-          </button>
+          <div className="flex items-center gap-3">
+            <a
+              href="/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium"
+            >
+              <ExternalLink size={16} />
+              <span className="hidden sm:inline">Go Portfolio</span>
+            </a>
+            <Link
+              to="/admin/dashboard"
+              className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors text-white"
+            >
+              <ArrowLeft size={18} />
+              Back
+            </Link>
+          </div>
         </div>
       </header>
 

@@ -168,25 +168,6 @@ cd frontend
 npm run build
 ```
 
-### Deploy Backend
-
-1. Set production environment variables
-2. Deploy to services like:
-   - Heroku
-   - Railway
-   - DigitalOcean
-   - AWS/Azure/GCP
-
-### Deploy Frontend
-
-1. Build the frontend
-2. Deploy to:
-   - Netlify
-   - Vercel
-   - AWS S3 + CloudFront
-   - GitHub Pages
-
-
 ## License
 
 MIT License - feel free to use this template for your own portfolio!

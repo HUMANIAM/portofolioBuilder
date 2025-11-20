@@ -5,6 +5,10 @@ import Dashboard from './pages/admin/Dashboard';
 import SocialLinks from './pages/admin/SocialLinks';
 import AboutMe from './pages/admin/AboutMe';
 import Skills from './pages/admin/Skills';
+import Settings from './pages/admin/Settings';
+import ProfileImage from './pages/admin/ProfileImage';
+import CV from './pages/admin/CV';
+import Projects from './pages/admin/Projects';
 
 // Protected Route Component
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -50,6 +54,38 @@ function AppWithRouter() {
           element={
             <ProtectedRoute>
               <Skills />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/settings"
+          element={
+            <ProtectedRoute>
+              <Settings />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/profile-image"
+          element={
+            <ProtectedRoute>
+              <ProfileImage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/cv"
+          element={
+            <ProtectedRoute>
+              <CV />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/projects"
+          element={
+            <ProtectedRoute>
+              <Projects />
             </ProtectedRoute>
           }
         />

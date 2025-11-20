@@ -1,6 +1,6 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Save } from 'lucide-react';
+import { ArrowLeft, Save, ExternalLink } from 'lucide-react';
 import { portfolioAPI } from '../../services/api';
 
 function SocialLinks() {
@@ -45,13 +45,33 @@ function SocialLinks() {
   return (
     <div className="min-h-screen bg-gray-950">
       <header className="bg-gray-900 border-b border-gray-800">
-        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center gap-4">
-          <Link to="/admin/dashboard" className="text-gray-400 hover:text-white transition-colors">
-            <ArrowLeft size={24} />
-          </Link>
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-            Social Links
-          </h1>
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="flex items-center gap-4">
+            <Link to="/admin/dashboard" className="text-gray-400 hover:text-white transition-colors">
+              <ArrowLeft size={24} />
+            </Link>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+              Social Links
+            </h1>
+          </div>
+          <div className="flex items-center gap-3">
+            <a
+              href="/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium"
+            >
+              <ExternalLink size={16} />
+              <span className="hidden sm:inline">Go Portfolio</span>
+            </a>
+            <Link
+              to="/admin/dashboard"
+              className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors text-white"
+            >
+              <ArrowLeft size={18} />
+              Back
+            </Link>
+          </div>
         </div>
       </header>
 

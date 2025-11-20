@@ -325,3 +325,62 @@ export const deleteCV = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
+// Upload Profile Image
+export const uploadProfileImage = async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: 'No image uploaded' });
+    }
+
+    const portfolio = await Portfolio.findOne();
+    if (!portfolio) {
+      return res.status(404).json({ message: 'Portfolio not found' });
+    }
+
+    // Delete old profile image if exists
+    if (portfolio.profileImageUrl) {
+      const oldImagePath = path.join(__dirname, '../../uploads/', path.basename(portfolio.profileImageUrl));
+      try {
+        await fs.unlink(oldImagePath);
+      } catch (err) {
+        console.log('Old profile image not found or already deleted');
+      }
+    }
+
+    portfolio.profileImageUrl = `/uploads/${req.file.filename}`;
+    await portfolio.save();
+
+    res.json({ message: 'Profile image updated successfully', profileImageUrl: portfolio.profileImageUrl });
+  } catch (error) {
+    console.error('Upload profile image error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+// Delete Profile Image
+export const deleteProfileImage = async (req, res) => {
+  try {
+    const portfolio = await Portfolio.findOne();
+    if (!portfolio) {
+      return res.status(404).json({ message: 'Portfolio not found' });
+    }
+
+    if (portfolio.profileImageUrl) {
+      const imagePath = path.join(__dirname, '../../uploads/', path.basename(portfolio.profileImageUrl));
+      try {
+        await fs.unlink(imagePath);
+      } catch (err) {
+        console.log('Profile image not found or already deleted');
+      }
+    }
+
+    portfolio.profileImageUrl = null;
+    await portfolio.save();
+
+    res.json({ message: 'Profile image removed successfully' });
+  } catch (error) {
+    console.error('Delete profile image error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};

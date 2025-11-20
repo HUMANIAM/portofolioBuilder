@@ -15,24 +15,19 @@ const createAdmin = async () => {
     await mongoose.connect(process.env.MONGODB_URI);
     console.log('Connected to MongoDB');
 
-    // Check if admin already exists
-    const existingAdmin = await User.findOne({ username: 'admin' });
-    if (existingAdmin) {
-      console.log('⚠️  Admin user already exists');
-      console.log('Username: admin');
-      console.log('If you forgot the password, delete the user and run this script again.');
-      process.exit(0);
-    }
+    // Clear all users to ensure a clean state
+    await User.deleteMany({});
+    console.log('�️  Cleared users collection');
 
-    // Create admin user
+    // Create default admin
     const admin = await User.create({
       username: 'admin',
       email: 'admin@portfolio.com',
-      password: 'admin123', // Change this password after first login!
+      password: 'admin123', // Will be hashed by User model pre-save hook
       role: 'admin'
     });
 
-    console.log('✅ Admin user created successfully!');
+    console.log('✅ Admin user created!');
     console.log('Username: admin');
     console.log('Password: admin123');
     console.log('⚠️  IMPORTANT: Change the password after first login!');

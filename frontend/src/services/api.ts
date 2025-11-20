@@ -38,6 +38,13 @@ export const authAPI = {
   verify: async () => {
     return fetchAPI('/auth/verify');
   },
+
+  updateCredentials: async (data: { currentPassword: string; newUsername?: string; newPassword?: string }) => {
+    return fetchAPI('/auth/update-credentials', {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    });
+  },
 };
 
 // Portfolio API
@@ -134,6 +141,34 @@ export const portfolioAPI = {
   
   deleteCV: async () => {
     return fetchAPI('/portfolio/cv', {
+      method: 'DELETE',
+    });
+  },
+
+  // Profile Image
+  uploadProfileImage: async (file: File) => {
+    const token = localStorage.getItem('adminToken');
+    const formData = new FormData();
+    formData.append('image', file);
+
+    const response = await fetch(`${API_URL}/portfolio/profile-image`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || 'Profile image upload failed');
+    }
+
+    return response.json();
+  },
+
+  deleteProfileImage: async () => {
+    return fetchAPI('/portfolio/profile-image', {
       method: 'DELETE',
     });
   },

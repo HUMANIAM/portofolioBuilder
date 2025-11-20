@@ -4,33 +4,48 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const uploadsDir = path.join(__dirname, '../../uploads/');
 
-// Configure storage
-const storage = multer.diskStorage({
+const createStorage = (prefix) => multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, '../../uploads/'));
+    cb(null, uploadsDir);
   },
   filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, 'cv-' + uniqueSuffix + path.extname(file.originalname));
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+    cb(null, `${prefix}-${uniqueSuffix}${path.extname(file.originalname)}`);
   }
 });
 
-// File filter
-const fileFilter = (req, file, cb) => {
+const cvFileFilter = (req, file, cb) => {
   const allowedTypes = /pdf|doc|docx/;
   const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
   const mimetype = allowedTypes.test(file.mimetype);
 
   if (mimetype && extname) {
     return cb(null, true);
-  } else {
-    cb(new Error('Only PDF, DOC, and DOCX files are allowed'));
   }
+  cb(new Error('Only PDF, DOC, and DOCX files are allowed'));
 };
 
-export const upload = multer({
-  storage: storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
-  fileFilter: fileFilter
+const imageFileFilter = (req, file, cb) => {
+  const allowedTypes = /jpeg|jpg|png|webp/;
+  const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
+  const mimetype = allowedTypes.test(file.mimetype.toLowerCase());
+
+  if (mimetype && extname) {
+    return cb(null, true);
+  }
+  cb(new Error('Only JPEG, PNG, or WEBP images are allowed'));
+};
+
+export const cvUpload = multer({
+  storage: createStorage('cv'),
+  limits: { fileSize: 5 * 1024 * 1024 },
+  fileFilter: cvFileFilter
+});
+
+export const imageUpload = multer({
+  storage: createStorage('profile'),
+  limits: { fileSize: 5 * 1024 * 1024 },
+  fileFilter: imageFileFilter
 });

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { LogOut, Edit, Github, Linkedin, Mail, FileText, Code, Briefcase } from 'lucide-react';
+import { LogOut, Edit, Github, Linkedin, Mail, FileText, Code, Briefcase, Settings, User, ExternalLink } from 'lucide-react';
 import { portfolioAPI } from '../../services/api';
 
 function Dashboard() {
@@ -49,20 +49,34 @@ function Dashboard() {
           <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
             Admin Dashboard
           </h1>
-          <button
-            onClick={handleLogout}
-            className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors"
-          >
-            <LogOut size={18} />
-            Logout
-          </button>
+          <div className="flex items-center gap-3">
+            <a
+              href="/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium"
+            >
+              <ExternalLink size={16} />
+              <span className="hidden sm:inline">Go Portfolio</span>
+            </a>
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors"
+            >
+              <LogOut size={18} />
+              Logout
+            </button>
+          </div>
         </div>
       </header>
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 py-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Social Links Card */}
+        {/* Portfolio Section */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-white mb-6">Portfolio</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Social Links Card */}
           <Link
             to="/admin/social-links"
             className="bg-gray-900/50 p-6 rounded-xl border border-gray-800 hover:border-blue-500/50 transition-all group"
@@ -145,6 +159,46 @@ function Dashboard() {
               <span>{data?.cvUrl ? 'Uploaded' : 'Not uploaded'}</span>
             </div>
           </Link>
+
+          {/* Profile Image Card */}
+          <Link
+            to="/admin/profile-image"
+            className="bg-gray-900/50 p-6 rounded-xl border border-gray-800 hover:border-blue-500/50 transition-all group"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-semibold">Profile Image</h2>
+              <Edit className="text-gray-500 group-hover:text-blue-400 transition-colors" size={20} />
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-400">
+              <User size={16} />
+              <span>{data?.profileImageUrl ? 'Update' : 'Not set'}</span>
+            </div>
+          </Link>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-gray-800 my-8"></div>
+
+        {/* Settings Section */}
+        <div>
+          <h2 className="text-2xl font-bold text-white mb-6">Settings</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Admin Settings Card */}
+            <Link
+              to="/admin/settings"
+              className="bg-gray-900/50 p-6 rounded-xl border border-gray-800 hover:border-blue-500/50 transition-all group"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-semibold">Admin Settings</h2>
+                <Edit className="text-gray-500 group-hover:text-blue-400 transition-colors" size={20} />
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-400">
+                <Settings size={16} />
+                <span>Update login credentials</span>
+              </div>
+            </Link>
+          </div>
         </div>
       </main>
     </div>
