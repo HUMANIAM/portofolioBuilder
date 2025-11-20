@@ -1,0 +1,58 @@
+# === Dependencies ===
+node_modules/
+
+# === Build / Artifacts ===
+# Frontend
+frontend/dist/
+frontend/dist-ssr/
+
+# Backend (if you ever build/compile)
+backend/build/
+backend/dist/
+
+# Package manager artifacts
+*.tsbuildinfo
+.npm/
+
+# === Environment / Secrets (keep out of git) ===
+.env
+.env.*
+backend/.env
+frontend/.env
+
+# === Runtime uploads / user content ===
+uploads/
+backend/uploads/
+
+# === Logs ===
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# === OS Files ===
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+.Spotlight-V100
+.Trashes
+
+# === IDE / Editor ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# === Tool-specific ===
+.vercel/
+.netlify/
+.cache/
+.temp/
+.eslintcache
