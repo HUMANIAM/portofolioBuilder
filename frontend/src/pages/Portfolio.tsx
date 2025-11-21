@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Github, Linkedin, Mail, ExternalLink, Code2, Briefcase, User, Download, Heart } from 'lucide-react';
 import { portfolioAPI } from '../services/api';
+import { API_BASE } from '../config';
 
 interface PortfolioData {
   socialLinks: {
@@ -65,7 +66,34 @@ function Portfolio() {
     );
   }
 
-  const API_BASE = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
+  const cvBaseClasses = 'px-8 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2';
+  const cvDownloadClasses = `${cvBaseClasses} border border-gray-700 hover:border-gray-600`;
+  const cvPlaceholderClasses = `${cvBaseClasses} bg-blue-600 hover:bg-blue-700 opacity-80 cursor-not-allowed`;
+
+  const renderCvAction = () => {
+    if (data.cvUrl) {
+      return (
+        <a
+          href={`${API_BASE}${data.cvUrl}`}
+          download
+          className={cvDownloadClasses}
+        >
+          <Download size={20} />
+          Download CV
+        </a>
+      );
+    }
+
+    return (
+      <button
+        type="button"
+        disabled
+        className={cvPlaceholderClasses}
+      >
+        CV coming soon
+      </button>
+    );
+  };
 
   return (
     <div className="min-h-screen">
@@ -265,16 +293,7 @@ function Portfolio() {
               <Mail size={20} />
               Send Email
             </a>
-            {data.cvUrl && (
-              <a 
-                href={`${API_BASE}${data.cvUrl}`}
-                download
-                className="px-8 py-4 border border-gray-700 hover:border-gray-600 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
-              >
-                <Download size={20} />
-                Download CV
-              </a>
-            )}
+            {renderCvAction()}
           </div>
         </div>
       </section>
