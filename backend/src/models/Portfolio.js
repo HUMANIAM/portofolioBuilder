@@ -4,7 +4,7 @@ const portfolioSchema = new mongoose.Schema({
   // Social Links
   socialLinks: {
     github: { type: String, default: 'https://github.com' },
-    linkedin: { type: String, default: 'https://linkedin.com' },
+    linkedin: { type: String, default: 'https://www.linkedin.com/feed/' },
     email: { type: String, default: 'contact@example.com' }
   },
   

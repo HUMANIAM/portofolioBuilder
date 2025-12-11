@@ -1,12 +1,5 @@
-# fly.toml app configuration file generated for portobosbos on 2025-12-10T09:03:21Z
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
-
 app = 'portobosbos'
 primary_region = 'fra'
-
-[build]
 
 [env]
   PORT = '8080'

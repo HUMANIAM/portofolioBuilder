@@ -16,13 +16,13 @@ export const getPortfolio = async (req, res) => {
       portfolio = await Portfolio.create({
         socialLinks: {
           github: 'https://github.com',
-          linkedin: 'https://linkedin.com',
+          linkedin: 'https://www.linkedin.com/feed/',
           email: 'contact@example.com'
         },
         aboutMe: {
-          whatDrivesMe: 'Driven by curiosity and a passion for solving real-world problems through technology. I thrive on continuous learning and creating impactful solutions.',
-          background: 'A passionate software engineer with expertise in building scalable web applications and innovative solutions. I love turning complex problems into simple, beautiful, and intuitive designs.',
-          experience: 'Experienced in developing full-stack applications using modern frameworks and technologies. Strong focus on writing clean, maintainable code and following best practices.'
+          whatDrivesMe: 'What drives me most is taking ownership of my work and applying both technical and interpersonal skills to create meaningful impact. My curiosity for technology, commitment to continuous learning and teamwork skills have enabled me to contribute effectively and adapt quickly across different domains.',
+          background: 'I am a software engineer with experience in lithography (ASML), Automotive (BMW) and Artificial intelligence (RDI-EG)',
+          experience: 'I have worked within various team structures, development methodologies, software architectures and codebases. Collaboration with ML researchers, testers, DevOps engineers, and domain experts. Strong focus on writing clean, maintainable code and following best practices.'
         },
         skillCategories: [
           { category: 'Frontend', skills: ['React', 'TypeScript', 'Next.js', 'TailwindCSS', 'HTML/CSS'] },

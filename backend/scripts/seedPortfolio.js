@@ -12,13 +12,13 @@ dotenv.config({ path: join(__dirname, '../.env') });
 const seedData = {
   socialLinks: {
     github: 'https://github.com/yourusername',
-    linkedin: 'https://linkedin.com/in/yourusername',
+    linkedin: 'https://www.linkedin.com/feed/',
     email: 'your.email@example.com'
   },
   aboutMe: {
-    whatDrivesMe: 'I am passionate about building software that makes a difference. The intersection of technology and human impact drives my work every day. I believe in writing clean, maintainable code and creating solutions that are both elegant and effective.',
-    background: 'With a strong foundation in computer science and years of hands-on experience, I specialize in full-stack development. I have worked on diverse projects ranging from web applications to distributed systems, always focusing on scalability and user experience.',
-    experience: 'I have contributed to various successful projects in agile teams, working with modern technologies and frameworks. My experience spans frontend development with React, backend services with Node.js, and databases including MongoDB and PostgreSQL.'
+    whatDrivesMe: 'What drives me most is taking ownership of my work and applying both technical and interpersonal skills to create meaningful impact. My curiosity for technology, commitment to continuous learning and teamwork skills have enabled me to contribute effectively and adapt quickly across different domains.',
+    background: 'I am a software engineer with experience in lithography (ASML), Automotive (BMW) and Artificial intelligence (RDI-EG)',
+    experience: 'I have worked within various team structures, development methodologies, software architectures and codebases. Collaboration with ML researchers, testers, DevOps engineers, and domain experts. Strong focus on writing clean, maintainable code and following best practices.'
   },
   skillCategories: [
     {

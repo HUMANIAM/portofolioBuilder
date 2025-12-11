@@ -102,7 +102,7 @@ function SocialLinks() {
               value={linkedin}
               onChange={(e) => setLinkedin(e.target.value)}
               className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-white"
-              placeholder="https://linkedin.com/in/username"
+              placeholder="https://www.linkedin.com/feed/"
               required
             />
           </div>
